@@ -7,7 +7,7 @@ class Snake:
     def __init__(self, screen):
         """Initialize class attributes."""
         self.screen = screen
-        self.image = pygame.image.load("assets/snake.jpg").convert()
+        self.image = pygame.image.load("snake/assets/snake.jpg").convert()
         self.direction = "right"  # Starting direction.
         self.x = 600
         self.y = 320

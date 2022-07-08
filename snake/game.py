@@ -1,4 +1,5 @@
 import pygame
+import time
 
 from pygame.locals import *
 from snake import Snake
@@ -38,3 +39,8 @@ class Game:
 
                 elif event.type == QUIT:
                     running = False
+
+            self.snake.walk()
+
+            # Update snake position interval.
+            time.sleep(0.15)

@@ -46,6 +46,10 @@ class Game:
             ):
                 raise TypeError
 
+        # Collision with border condition.
+        if not (0 <= self.snake.x[0] <= 1240 and 0 <= self.snake.y[0] <= 680):
+            raise TypeError
+
     def start_game(self):
         """Start the game."""
         running = True

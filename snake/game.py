@@ -35,7 +35,8 @@ class Game:
         pygame.display.flip()
 
         # Collision with apple condition.
-        if self.collision(self.snake.x, self.snake.y, self.apple.x, self.apple.y):
+        if self.collision(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
+            self.snake.increase_length()
             self.apple.move()
 
     def start_game(self):

@@ -3,6 +3,7 @@ import time
 
 from pygame.locals import *
 from snake import Snake
+from apple import Apple
 
 
 class Game:
@@ -15,6 +16,13 @@ class Game:
         self.surface = pygame.display.set_mode((1280, 720))
         self.snake = Snake(self.surface)
         self.snake.draw()
+        self.apple = Apple(self.surface)
+        self.apple.draw()
+
+    def play(self):
+        """Play the game."""
+        self.snake.walk()
+        self.apple.draw()
 
     def start_game(self):
         """Start the game."""
@@ -40,7 +48,7 @@ class Game:
                 elif event.type == QUIT:
                     running = False
 
-            self.snake.walk()
+            self.play()
 
             # Update snake position interval.
             time.sleep(0.15)

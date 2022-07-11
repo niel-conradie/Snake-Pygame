@@ -1,5 +1,7 @@
 import pygame
 
+from random import randint
+
 
 class Apple:
     """A class to represent an apple."""
@@ -15,3 +17,8 @@ class Apple:
         """Display the apple."""
         self.screen.blit(self.image, (self.x, self.y))
         pygame.display.flip()
+
+    def move(self):
+        """Move the apple to random position."""
+        self.x = randint(10, 15) * 40
+        self.y = randint(10, 15) * 40

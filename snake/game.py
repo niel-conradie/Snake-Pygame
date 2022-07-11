@@ -1,7 +1,8 @@
 import pygame
-import time
 
 from pygame.locals import *
+from time import sleep
+
 from snake import Snake
 from apple import Apple
 
@@ -19,10 +20,23 @@ class Game:
         self.apple = Apple(self.surface)
         self.apple.draw()
 
+    @staticmethod
+    def collision(x1, y1, x2, y2):
+        """Collision detection."""
+        if x1 >= x2 and x1 < x2 + 40:
+            if y1 >= y2 and y1 < y2 + 40:
+                return True
+        return False
+
     def play(self):
         """Play the game."""
         self.snake.walk()
         self.apple.draw()
+        pygame.display.flip()
+
+        # Collision with apple condition.
+        if self.collision(self.snake.x, self.snake.y, self.apple.x, self.apple.y):
+            self.apple.move()
 
     def start_game(self):
         """Start the game."""
@@ -51,4 +65,4 @@ class Game:
             self.play()
 
             # Update snake position interval.
-            time.sleep(0.15)
+            sleep(0.15)

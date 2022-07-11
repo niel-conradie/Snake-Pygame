@@ -39,6 +39,13 @@ class Game:
             self.snake.increase_length()
             self.apple.move()
 
+        # Collision with snake condition.
+        for i in range(2, self.snake.length):
+            if self.collision(
+                self.snake.x[0], self.snake.y[0], self.snake.x[i], self.snake.y[i]
+            ):
+                raise TypeError
+
     def start_game(self):
         """Start the game."""
         running = True
@@ -63,7 +70,11 @@ class Game:
                 elif event.type == QUIT:
                     running = False
 
-            self.play()
+            try:
+                self.play()
+            except TypeError:
+                print("\nGame Over!")
+                quit()
 
             # Update snake position interval.
             sleep(0.15)

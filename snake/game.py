@@ -72,6 +72,7 @@ class Game:
         # Collision with apple condition.
         if self.collision(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
             self.snake.increase_length()
+            self.snake.increase_speed()
             self.apple.move()
 
         # Collision with snake condition.
@@ -123,4 +124,4 @@ class Game:
                 self.reset()
 
             # Update snake position interval.
-            sleep(0.15)
+            sleep(self.snake.speed)

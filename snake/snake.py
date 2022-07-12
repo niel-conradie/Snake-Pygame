@@ -12,6 +12,7 @@ class Snake:
         self.length = 1
         self.x = [40]
         self.y = [40]
+        self.speed = 0.15
 
     def move_left(self):
         """Move snake left."""
@@ -57,7 +58,11 @@ class Snake:
         pygame.display.flip()
 
     def increase_length(self):
-        """Increase snake body size by 1 incrementally."""
+        """Increase snake body size incrementally."""
         self.length += 1
         self.x.append(-1)
         self.y.append(-1)
+
+    def increase_speed(self):
+        """Increase snake speed incrementally."""
+        self.speed -= 0.001

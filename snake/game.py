@@ -28,10 +28,17 @@ class Game:
                 return True
         return False
 
+    def display_score(self):
+        """Display the score."""
+        font = pygame.font.SysFont("arial", 30)
+        score = font.render(f"Score: {self.snake.length - 1}", True, (200, 200, 200))
+        self.surface.blit(score, (1125, 10))
+
     def play(self):
         """Play the game."""
         self.snake.walk()
         self.apple.draw()
+        self.display_score()
         pygame.display.flip()
 
         # Collision with apple condition.

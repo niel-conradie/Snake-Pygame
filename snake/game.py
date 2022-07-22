@@ -13,12 +13,14 @@ class Game:
     def __init__(self):
         """Initialize class attributes."""
         pygame.init()
+        pygame.mixer.init()
         pygame.display.set_caption("Snake")
         self.surface = pygame.display.set_mode((1280, 720))
         self.snake = Snake(self.surface)
         self.snake.draw()
         self.apple = Apple(self.surface)
         self.apple.draw()
+        self.music()
 
     @staticmethod
     def collision(x1, y1, x2, y2):
@@ -27,6 +29,22 @@ class Game:
             if y1 >= y2 and y1 < y2 + 40:
                 return True
         return False
+
+    @staticmethod
+    def sfx(sound):
+        """Play sound effects conditions."""
+        if sound == "crash":
+            sound = pygame.mixer.Sound("snake/assets/audio/sfx_crash.mp3")
+        elif sound == "ding":
+            sound = pygame.mixer.Sound("snake/assets/audio/sfx_ding.mp3")
+
+        pygame.mixer.Sound.play(sound)
+
+    @staticmethod
+    def music():
+        """Play background music."""
+        pygame.mixer.music.load("snake/assets/audio/background_music.mp3")
+        pygame.mixer.music.play(-1, 0)
 
     def display_score(self):
         """Display the score."""
@@ -67,10 +85,12 @@ class Game:
         self.snake.walk()
         self.apple.draw()
         self.display_score()
+
         pygame.display.flip()
 
         # Collision with apple condition.
         if self.collision(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
+            self.sfx("ding")
             self.snake.increase_length()
             self.snake.increase_speed()
             self.apple.move()
@@ -80,11 +100,13 @@ class Game:
             if self.collision(
                 self.snake.x[0], self.snake.y[0], self.snake.x[i], self.snake.y[i]
             ):
-                raise TypeError
+                self.sfx("crash")
+                raise "Collision"
 
         # Collision with border condition.
         if not (0 <= self.snake.x[0] <= 1240 and 0 <= self.snake.y[0] <= 680):
-            raise TypeError
+            self.sfx("crash")
+            raise "Collision"
 
     def start_game(self):
         """Start the game."""

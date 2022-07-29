@@ -47,8 +47,13 @@ Snake can be installed via [Pip](https://pypi.org/project/pip/). To start, clone
 ----
 ## **Usage**
 
-To start the Snake game run thus file.
+To launch the Snake Game use thus file.
 ```bash
   run.py
 ```
+----
+## **License**
+
+[MIT License](https://github.com/niel-conradie/Snake/blob/master/LICENSE)
+
 ----

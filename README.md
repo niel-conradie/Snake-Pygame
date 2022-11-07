@@ -7,7 +7,7 @@ The player controls a long, thin creature, resembling a snake, which roams aroun
 ----
 ## **Requirements**
 
-- [Python 3.10.5](https://www.python.org/downloads/release/python-3105/)
+- [Python 3.10.X](https://www.python.org/downloads/)
 - [Pygame 2.1.2](https://www.pygame.org/news)
 ----
 ## **Installation**
@@ -16,8 +16,8 @@ Snake can be installed via [Pip](https://pypi.org/project/pip/). To start, clone
 
 * **Clone Repository**
 ```bash
-  $ git clone https://github.com/niel-conradie/Snake.git
-  $ cd Snake
+  $ git clone https://github.com/niel-conradie/snake.git
+  $ cd snake
 ```
 ### **Pip Install**
 

@@ -49,7 +49,9 @@ class Game:
     def display_score(self):
         """Display the score."""
         font = pygame.font.SysFont("arial", 30)
-        score = font.render(f"Score: {self.snake.length - 1}", True, (255, 255, 255))
+        score = font.render(
+            f"Score: {self.snake.length - 1}", True, (255, 255, 255)
+        )
         self.surface.blit(score, (1125, 10))
 
     def game_over(self):
@@ -69,7 +71,9 @@ class Game:
         # Display restart on screen.
         restart_font = pygame.font.SysFont("arial", 30)
         restart = restart_font.render(
-            "To play again press Enter! To exit press Escape!", True, (255, 255, 255)
+            "To play again press Enter! To exit press Escape!",
+            True,
+            (255, 255, 255),
         )
         self.surface.blit(restart, (300, 600))
 
@@ -89,7 +93,9 @@ class Game:
         pygame.display.flip()
 
         # Collision with apple condition.
-        if self.collision(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
+        if self.collision(
+            self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y
+        ):
             self.sfx("ding")
             self.snake.increase_length()
             self.snake.increase_speed()
@@ -98,7 +104,10 @@ class Game:
         # Collision with snake condition.
         for i in range(2, self.snake.length):
             if self.collision(
-                self.snake.x[0], self.snake.y[0], self.snake.x[i], self.snake.y[i]
+                self.snake.x[0],
+                self.snake.y[0],
+                self.snake.x[i],
+                self.snake.y[i],
             ):
                 self.sfx("crash")
                 raise "Collision"

@@ -1,13 +1,12 @@
 from game import Game
 
 
-def run():
-    """Snake."""
+if __name__ == "__main__":
     run = Game()
 
-    # Starting the game.
-    run.start_game()
-
-
-if __name__ == "__main__":
-    run()
+    try:
+        # Starting the application.
+        run.start_game()
+    except KeyboardInterrupt:
+        # Stopping the application.
+        quit("\n\nProgram Terminated")
